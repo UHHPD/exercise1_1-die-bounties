@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "1.1",
+      "setup": "g++ hallo.cc -o hallo",
+      "run": "./hallo",
+      "input": "",
+      "output": "llo",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    }
+  ]
+}
