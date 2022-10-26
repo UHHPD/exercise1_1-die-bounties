@@ -20,7 +20,7 @@ int main () {
       inFile >> value1 >> value2;
       if (inFile.eof()) {break;}
       sum = value1+value2;
-      cout << value1 << "+" << value2 << "=" << sum << "\n";
+      cout << sum << "\n";
       outFile << sum << "\n";
     }
     inFile.close();
