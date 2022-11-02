@@ -20,9 +20,11 @@ int main () {
   int count = 0;
   double var = 0;
   double var_count = 0;
+  double var_count_bessel = 0;
   double mean_val;
   list<double> store_mean;
   list<double> store_variance;
+  list<double> store_variance_bessel;
   double store_arr[9] = {0,0,0,0,0,0,0,0,0};
   ifstream inFile ("datensumme.txt");
   ofstream outFileM;
@@ -48,13 +50,16 @@ int main () {
         outFileM << mean_val << "\n";
         store_mean.push_back(mean_val);
         var_count = 0.0;
+        var_count_bessel = 0.0;
         for (int i=0; i<9; i++) {
           double diff = store_arr[i]-mean_val;
-          double var = pow(diff, 2)/9;
-          var_count += var;
+          double var = pow(diff, 2);
+          var_count += var/9;
+          var_count_bessel += var/8;
         }
         outFileV << var_count << "\n";
         store_variance.push_back(var_count);
+        store_variance_bessel.push_back(var_count_bessel);
         count = 0;
       }
     }
@@ -73,6 +78,11 @@ int main () {
   for (list<double>::iterator it = store_variance.begin(); it != store_variance.end(); it++){
     mean_of_variances += *it/26;
     }
+  double mean_of_variances_bessel = 0;
+  for (list<double>::iterator it = store_variance_bessel.begin(); it != store_variance_bessel.end(); it++){
+    mean_of_variances_bessel += *it/26;
+    }
   cout << mean_of_means << "\n";
   cout << mean_of_variances << "\n";
+  cout << mean_of_variances_bessel << "\n";
 }
