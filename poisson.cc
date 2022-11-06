@@ -8,6 +8,11 @@
 #include <vector>
 using namespace std;
 
+double poisson(double mu, int k) {
+  double p = pow(mu, k)*exp(-mu)/tgamma(k+1);
+  return p;
+}
+
 int main(){
   vector<int> zaehler;
   zaehler.assign(11, 0);
@@ -24,14 +29,19 @@ int main(){
   }
   inFile.close();
 
-  ofstream outFile;
-  outFile.open("hist.txt");
+  ofstream outFile1;
+  ofstream outFile2;
+  outFile1.open("hist.txt");
+  outFile2.open("histpoi.txt");
+
   for (int i=0; i<11; i++) {
-    outFile << i << " " << zaehler[i] << "\n";
+    outFile1 << i << " " << zaehler[i] << "\n";
+    outFile2 << i << " " << zaehler[i] << " " << 234*poisson(3.11538, i) << "\n";
   }
-  outFile.close();
+  outFile1.close();
+  outFile2.close();
 
   for ( unsigned int k = 0 ; k < zaehler.size () ; ++ k ) {
-    cout << k << " : " << zaehler [k] << endl ;
+    cout << k << " : " << zaehler [k] << " : " << 234*poisson(3.11538, k) << endl ;
   }
  }
