@@ -49,7 +49,7 @@ int main(){
   	outFile3 << mean << " " << -2*log(prob(mean, daten)) + 2*log(prob(3.11538, daten)) << "\n";
   }
   for (double mean = 3.0; mean <=3.3; mean += 0.01) {
-    if (-2*log(prob(mean, daten)/prob(3.11538, daten)) < 1.0) {uncertainty.push_back(mean); cout << "test " << mean << "\n";}
+    if (-2*log(prob(mean, daten)/prob(3.11538, daten)) < 1.0) {uncertainty.push_back(mean);}
   }
   outFile1.close();
   outFile2.close();
